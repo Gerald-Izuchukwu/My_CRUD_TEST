@@ -60,7 +60,8 @@ app.get('/brothers/:id', (req, res)=>{
     const found = brothers2.some(brother => {
         return brother.id === parseInt(req.params.id)});
 
-    if (found) {
+    
+        if (found) {
         res.json(brothers2.filter(brother =>{
             return brother.id ===(parseInt(req.params.id)) //we use parseInt to convert the ID to a string
         }))
