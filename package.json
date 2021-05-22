@@ -1,0 +1,30 @@
+{
+  "name": "my_crud_test",
+  "version": "1.0.0",
+  "description": "testing my crud capabilities",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gerald-Izuchukwu/My_CRUD_TEST.git"
+  },
+  "author": "Jayyphire",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gerald-Izuchukwu/My_CRUD_TEST/issues"
+  },
+  "homepage": "https://github.com/Gerald-Izuchukwu/My_CRUD_TEST#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validator": "^6.11.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
