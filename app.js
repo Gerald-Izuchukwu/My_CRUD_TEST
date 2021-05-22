@@ -1,10 +1,10 @@
 const express = require ('express');
 const path = require('path');
 const fs = require('fs');
-const brothers_all = require('./brothers_db');
 const { brothers, brothers2 } = require('./brothers_db');
+const Brother = require('./models/brother.models')
 
-const logger = require('./middleware/log_mw')
+const logger = require('./middleware/log_mw');
 // const route 
 const PORT = 5600;
 
@@ -15,7 +15,7 @@ const app = express();
 // app.use(express.static(path.join(__dirname, 'public')));
 
 
-// init login middleware
+// init log middleware
 /*this basically runs anytime a request is sent */
 app.use(logger)
 
@@ -53,9 +53,23 @@ app.get ('/3', (req, res)=>{
 
 // getting brothers by id
 app.get('/brothers/:id', (req, res)=>{
-    res.json(brothers2.filter(brother =>{
-        return brother.id ===(parseInt(req.params.id)) //we use parseInt to convert the ID to a string
-    }))
+    /* first lets check if the ID passed exists, if it does we send back the api, if not we throw an error and set
+    the status to 400*/
+    
+    // the some method basically returns a boolean(true or false) depending on the argument passed,
+    const found = brothers2.some(brother => {
+        return brother.id === parseInt(req.params.id)});
+
+    if (found) {
+        res.json(brothers2.filter(brother =>{
+            return brother.id ===(parseInt(req.params.id)) //we use parseInt to convert the ID to a string
+        }))
+        
+    } else {
+        res.status(400).json({msg: `no member with the id of ${req.params.id}`})
+        
+    }
+    
 })
 app.listen(PORT, (req, res)=>{
     console.log(`server running on port : ${PORT}`)
