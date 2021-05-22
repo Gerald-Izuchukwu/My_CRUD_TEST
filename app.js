@@ -2,7 +2,7 @@ const express = require ('express');
 const path = require('path');
 const fs = require('fs');
 const { brothers, brothers2 } = require('./brothers_db');
-const Brother = require('./models/brother.models')
+// const Brother = require('./models/brother.models')
 
 const logger = require('./middleware/log_mw');
 // const route 
